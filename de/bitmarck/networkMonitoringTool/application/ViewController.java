@@ -39,9 +39,6 @@ public class ViewController implements Initializable   {
 	
 	public ObservableList<Service> getConnectionList(){
 		ObservableList<Service> os = FXCollections.observableArrayList();
-		os.add(new Service("Auslieferung", getTomConnection()));
-		os.add(new Service("Test", getTomConnection()));
-		os.add(new Service("Stage", getTomConnection()));
 		os.add(new Service("PreProd", getTomConnection()));
 		os.add(new Service("Auslieferung", getFirstConnection()));
 		os.add(new Service("Test", getFirstConnection()));
@@ -51,31 +48,35 @@ public class ViewController implements Initializable   {
 		return os;
 	}
 	
+	CheckBox cTom;
 	public CheckBox getTomConnection() {
-		CheckBox btn = new CheckBox("Tomcat");
-		btn.setId(btn.getText());
-		btn.setMaxWidth(150);
-		btn.setOnAction(new EventHandler<ActionEvent>() {
+		cTom = new CheckBox("Tomcat");
+		cTom.setId(cTom.getText());
+		cTom.setMaxWidth(150);
+		// Werte verändern
+		cTom.setSelected(true);
+		
+		cTom.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent arg0) {
-				btn.setPickOnBounds(true);
-				System.out.println("Der Button: " + btn.getId());				
+					System.out.println("isSelected: " + cTom.isSelected());
+					System.out.println("Der Button: " + cTom.getId());				
 			}
 		});
-		return btn;
+		return cTom;
 	}
-	
+	CheckBox cFirst;
 	public CheckBox getFirstConnection() {
-		CheckBox btn = new CheckBox("FirstSpirit");
-		btn.setId(btn.getText());
-		btn.setMaxWidth(150);
-		btn.setOnAction(new EventHandler<ActionEvent>() {
+		 cFirst = new CheckBox("FirstSpirit");
+		 cFirst.setId(cFirst.getText());
+		 cFirst.setMaxWidth(150);
+		 cFirst.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent arg0) {
-				System.out.println("Der Button: " + btn.getId());				
+				System.out.println("Der Button: " + cFirst.getId());				
 			}
 		});
-		return btn;
+		return cFirst;
 	}
 	
 	public void setTableColumnValue() {
