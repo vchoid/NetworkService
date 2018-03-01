@@ -4,13 +4,8 @@
  *                                                                             *
  ******************************************************************************/
 .root{
-	/* Swatch Colors - Blue*/
-	-swatch-100: #BBDEFB;
-	-swatch-200: #90CAF9;
-	-swatch-300: #64BEF6;
-	-swatch-400: #42A5F5;
-	-swatch-500: #2196F3;
-	-fx-text-base-color: rgb(100.0, 100.0, 100.0);
+	
+	-fx-text-base-color: white;
 	/* Text defaults */
 	-fx-font-family: 'Roboto Medium';
 	-fx-disabled-opacity: 0.6;
@@ -64,37 +59,46 @@ TableView, .column-header,.filler, .show-hide-columns-button{
 
 /*******************************************************************************
  *                                                                             *
- * CheckBox -> Material ToggleSwitch                                           *
+ * TabPane                                                                     *
  *                                                                             *
  ******************************************************************************/
-
-.check-box>*.box{
-	-fx-background-color: red;
-	-fx-pref-height: 20;
-	-fx-pref-width: 40;
-	-fx-background-radius: 100; /* Full round corner */
-	-fx-background-insets: 0;
-	-fx-padding:0;
-}
-.check-box:selected>*.box{
-	-fx-background-color: derive(green, 0.54);
+.tab-pane .tab-header-area .tab-header-background {
+    -fx-opacity: 0.0;
 }
 
 
-
-.check-box >*.box>*.mark {
-	-fx-background-color: white;
-	-fx-padding:0;
-	-fx-background-insets: 0;
-	-fx-shape: "M 10.5,0 C 4.7010101,0 0,4.7010101 0,10.5 0,16.29899 4.7010101,21 10.5,21 16.29899,21 21,16.29899 21,10.5 21,4.7010101 16.29899,0 10.5,0 Z m 29.455078,10.6875 0,0.134766 0.08984,0 0,-0.134766 z";
-	-fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.15), 6.0, 0.7, 0.0,1.5);
+.tab-pane{
+    -fx-tab-min-width:90.0px;
 }
 
-.check-box:selected>*.box>*.mark {
-	-fx-background-color: white;
-	-fx-shape: "M 10,5 c 5.79899,0 10.5,4.701 10.5,10.5 0,5.799 -4.70101,10.5 -10.5,10.5 -5.79899,0 -10.5,-4.701 -10.5,-10.5 0,-5.799 4.70101,-10.5 10.5,-10.5 z m -29.455078,10.6875 0,0.1348 -0.08984,0 0,-0.1348 z";
+.tab{
+    -fx-background-insets: 0.0 1.0 0.0 1.0,0.0,0.0;
+}
+.tab-pane .tab{
+    -fx-background-color: #e6e6e6;
+
 }
 
+.tab-pane .tab:selected{
+    -fx-background-color: #3c3c3c;
+}
+
+.tab .tab-label { 
+    -fx-alignment: CENTER;
+    -fx-text-fill: #828282;
+    -fx-font-size: 12.0px;
+    -fx-font-weight: bold;
+}
+
+.tab:selected .tab-label { 
+    -fx-alignment: CENTER;
+    -fx-text-fill: #96b946;
+}
+/*******************************************************************************
+ *                                                                             *
+ * Text, Text field & Text area                                                *
+ *                                                                             *
+ ******************************************************************************/
 
 
 

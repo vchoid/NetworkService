@@ -3,16 +3,13 @@ package de.bitmarck.networkMonitoringTool.application;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import de.bitmarck.networkMonitoringTool.Controller.ButtonEventHandler;
 import de.bitmarck.networkMonitoringTool.model.Service;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -26,7 +23,7 @@ public class ViewController implements Initializable   {
 	@FXML
 	private TableColumn<Service, Button> connCol;
 	
-	
+	private ButtonEventHandler beh = new ButtonEventHandler();
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -34,11 +31,12 @@ public class ViewController implements Initializable   {
 		tv.setItems(getConnectionList());
 		
 	}
-	
-	
-	
+		
 	public ObservableList<Service> getConnectionList(){
 		ObservableList<Service> os = FXCollections.observableArrayList();
+		os.add(new Service("Auslieferung", getTomConnection()));
+		os.add(new Service("Test", getTomConnection()));
+		os.add(new Service("Stage", getTomConnection()));
 		os.add(new Service("PreProd", getTomConnection()));
 		os.add(new Service("Auslieferung", getFirstConnection()));
 		os.add(new Service("Test", getFirstConnection()));
@@ -48,35 +46,22 @@ public class ViewController implements Initializable   {
 		return os;
 	}
 	
-	CheckBox cTom;
-	public CheckBox getTomConnection() {
-		cTom = new CheckBox("Tomcat");
-		cTom.setId(cTom.getText());
-		cTom.setMaxWidth(150);
-		// Werte verändern
-		cTom.setSelected(true);
+	public Button getTomConnection() {
+		Button btn = new Button("Tomcat");
+		btn.setId(btn.getText());
+		btn.setMaxWidth(150);
+		btn.setOnAction(beh);
 		
-		cTom.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent arg0) {
-					System.out.println("isSelected: " + cTom.isSelected());
-					System.out.println("Der Button: " + cTom.getId());				
-			}
-		});
-		return cTom;
+		return btn;
 	}
-	CheckBox cFirst;
-	public CheckBox getFirstConnection() {
-		 cFirst = new CheckBox("FirstSpirit");
-		 cFirst.setId(cFirst.getText());
-		 cFirst.setMaxWidth(150);
-		 cFirst.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent arg0) {
-				System.out.println("Der Button: " + cFirst.getId());				
-			}
-		});
-		return cFirst;
+	
+	public Button getFirstConnection() {
+		Button btn = new Button("FirstSpirit");
+		btn.setId(btn.getText());
+		btn.setMaxWidth(150);
+		btn.setOnAction(beh);
+		
+		return btn;
 	}
 	
 	public void setTableColumnValue() {

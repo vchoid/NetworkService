@@ -1,14 +1,14 @@
 package de.bitmarck.networkMonitoringTool.model;
 
-import javafx.scene.control.CheckBox;
+import javafx.scene.control.Button;
 
 public class Service {
 
 	private String server;
-	private CheckBox connection;
+	private Button connection;
 	
 	
-	public Service(String server, CheckBox connection) {
+	public Service(String server, Button connection) {
 		super();
 		this.server = server;
 		this.connection = connection;
@@ -20,10 +20,10 @@ public class Service {
 	public void setServer(String server) {
 		this.server = server;
 	}
-	public CheckBox getConnection() {
+	public Button getConnection() {
 		return connection;
 	}
-	public void setConnection(CheckBox connection) {
+	public void setConnection(Button connection) {
 		this.connection = connection;
 	}
 	
